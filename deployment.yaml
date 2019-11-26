@@ -1,0 +1,63 @@
+apiVersion: v1
+
+kind: Service
+
+metadata:
+
+  name: customer-demo-service
+
+  labels:
+
+    app: customer-demo-service
+
+spec:
+
+  type: NodePort
+
+  ports:
+
+  - port: 8090
+
+    name: http
+
+  selector:
+
+    app: customer-demo-service
+
+---
+
+apiVersion: extensions/v1beta1
+
+kind: Deployment
+
+metadata:
+
+  name: customer-demo-service
+
+spec:
+
+  replicas: 1
+
+  template:
+
+    metadata:
+
+      labels:
+
+        app: customer-demo-service
+
+        version: v1
+
+    spec:
+
+      containers:
+
+      - name: customer-demo-service
+
+        image: piomin/customer-demo-service:1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 8090
