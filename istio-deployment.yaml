@@ -16,7 +16,7 @@ spec:
 
   ports:
 
-  - port: 8091
+  - port: 8080
 
     name: http
 
@@ -40,7 +40,7 @@ metadata:
 
 ---
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 
 kind: Deployment
 
@@ -55,6 +55,14 @@ spec:
   replicas: 1
 
   strategy: {}
+
+  selector:
+  
+      matchLabels:
+  
+        app: details
+  
+        version: v1
 
   template:
 
