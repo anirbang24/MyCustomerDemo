@@ -49,18 +49,23 @@ metadata:
   creationTimestamp: null
 
   name: customer-demo-service-v1
+  
+  labels:
+
+    app: customer-demo-service
+
+    version: v1
 
 spec:
 
   replicas: 1
 
-  strategy: {}
-
+ 
   selector:
   
       matchLabels:
   
-        app: details
+        app: customer-demo-service
   
         version: v1
 
